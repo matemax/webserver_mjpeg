@@ -34,10 +34,6 @@ public:
 	QWidget *centralWidget;
 	QGridLayout *gridLayout;
 	QTextBrowser *textinfo;
-	QPushButton *stoping;
-	QPushButton *starting;
-	QSpacerItem* horizontalSpacer;
-	QLabel *webLabel;
 	GMainWindow();
 	~GMainWindow();
 	
@@ -56,25 +52,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-private:
-		void sendMjpeg();
-private slots:
-	void drawWeb();
-	void on_starting_clicked();
-    void on_stoping_clicked();
+
 public slots:
     void newuser(Tufao::HttpServerRequest &req,
 		Tufao::HttpServerResponse &res);
 
 private:
-	cv::Mat currentFrame;
-	VideoCapture cap;
 	GMainWindow *ui;
    // QTcpServer *tcpServer;
     int server_status;
-    QMap<int, Tufao::HttpServerRequest *> clients;
-	QMap<int, bool> aliveClients;
-	int countClients = 0;
 	Tufao::HttpServer* server;
 	bool isBlock = true;
 	//BasicHandler bhandler;

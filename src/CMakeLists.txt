@@ -8,7 +8,7 @@ if(WIN32)
     add_definitions(-D_NO_ASYNCRTIMP)
 endif(WIN32)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../cmake/modules" ${CMAKE_MODULE_PATH})
 
 set(QT5_CMAKES CACHE PATH "QT5 Cmake files (qtbase/lib/cmake)")
 
@@ -59,9 +59,6 @@ source_group("Resource Files" FILES ${RESOURCES})
 # RC files need to be processed by Qt wrapper to generate RC sources.
 qt5_add_resources(RESOURCES_SOURCES ${RESOURCES})
 
-
-find_package(CXX11 REQUIRED)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX11_FLAGS}")
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 qt5_use_modules(${PROJECT_NAME} Core Network)

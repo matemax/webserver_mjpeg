@@ -65,27 +65,13 @@ void VidoeHandler::GET()
 		"Content-Type: multipart/x-mixed-replace;boundary=--boundary\r\n\r\n");
 	req.socket().write(ContentType);
 	auto pleer = PleerFactory::getPleer(id);
-	connect(pleer.get(), &Pleer::newFrame, this, &VidoeHandler::reDraw);
-	connect(pleer.get(), &Pleer::newFrame, this, [this](std::shared_ptr<QByteArray> frame)
-	{
-		QByteArray BoundaryString = ("--boundary\r\n" \
-			"Content-Type: image/jpeg\r\n" \
-			"Content-Length: ");
-		BoundaryString.append(QString::number(frame->length()));
-		BoundaryString.append("\r\n\r\n");
-		//auto client = req;
-		req.socket().write(BoundaryString);
-		req.socket().write(*frame.get()); // Write The Encoded Image
-		req.socket().flush();
-	});
+	connect(pleer.get(), &Pleer::newFrame, this, &VidoeHandler::reDraw,Qt::QueuedConnection);
 }
 
 void VidoeHandler::POST()
 {
 	auto pleerAndId = PleerFactory::preparePleer();
 	auto pleer = pleerAndId.second;
-	//std::thread thr([&]() {pleer->start(); });
-	//thr.detach();
 	emit pleer->startPlay();
 	QJsonObject responsePayload;
 	responsePayload["video_id"] = pleerAndId.first;
