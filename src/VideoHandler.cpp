@@ -24,7 +24,7 @@ void VidoeHandler::reDraw(std::shared_ptr<QByteArray> frame)
 		"Content-Type: image/jpeg\r\n" \
 		"Content-Length: ");
 	BoundaryString.append(QString::number(frame->length()));
-	BoundaryString.append("\r\n\r\n");
+	BoundaryString.append("\r\n\r\n");	
 	//auto client = req;
 	req.socket().write(BoundaryString);
 	req.socket().write(*frame.get()); // Write The Encoded Image

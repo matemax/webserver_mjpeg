@@ -35,11 +35,9 @@ void Pleer::start()
 		QByteArray CurrentImg(reinterpret_cast<char*>(buff.data()), buff.size());
 
 		auto imgArray = std::make_shared<QByteArray>(CurrentImg);
-
 		emit newFrame(imgArray);
 		QCoreApplication::processEvents();
 	}
-
 }
 
 std::shared_ptr<Pleer> PleerFactory::getPleer(int id)

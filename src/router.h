@@ -1,3 +1,5 @@
+#pragma once
+
 #include <QMap>
 #include <QRegExp>
 #include "basichandler.h"

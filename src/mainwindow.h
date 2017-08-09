@@ -14,6 +14,7 @@
 #include <HttpServer>
 #include "basichandler.h"
 #include "router.h"
+#include "TCPServer.h"
 
 class QGridLayout;
 class QTextBrowser;
@@ -54,17 +55,18 @@ public:
     ~MainWindow();
 
 public slots:
-    void newuser(Tufao::HttpServerRequest &req,
-		Tufao::HttpServerResponse &res);
+  /*  void newuser(Tufao::HttpServerRequest &req,
+		Tufao::HttpServerResponse &res);*/
 
 private:
 	GMainWindow *ui;
    // QTcpServer *tcpServer;
+	TcpServer* server;
     int server_status;
-	Tufao::HttpServer* server;
-	bool isBlock = true;
+	/*Tufao::HttpServer* server;
+	*/bool isBlock = true;
 	//BasicHandler bhandler;
-	Router router;
+	/*Router router;*/
 };
 
 #endif // MAINWINDOW_H

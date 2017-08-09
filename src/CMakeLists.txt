@@ -40,6 +40,8 @@ set(SOURCES
 	router.cpp
 	pleer.cpp
 	VideoHandler.cpp
+	TCPServer.cpp
+	Worker.cpp
 )
 
 set(HEADERS
@@ -48,6 +50,8 @@ set(HEADERS
 	router.h
 	pleer.h
 	VideoHandler.h
+	TCPServer.h
+	Worker.h
 )
 set(RESOURCES)
 
